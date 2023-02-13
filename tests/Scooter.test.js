@@ -36,7 +36,22 @@ test("Scooter is returned to the station", ()=>{
   expect(user).toBe(null);
 })
   //requestRepair method
-
+  test("recharge", async () => {
+   
+    await scooter.recharge();
+    
+    expect(scooter.charge).toBe(100);
+  });
   //charge method
-
+  test("requestRepair", async () => {
+    const scooter = new Scooter("Station 1");
+    
+    scooter.requestRepair();
+    
+    expect(scooter.isBroken).toBe(true);
+    
+    await new Promise(resolve => setTimeout(resolve, 5000));
+    
+    expect(scooter.isBroken).toBe(false);
+  });
 })
