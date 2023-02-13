@@ -24,9 +24,17 @@ describe('scooter methods', () => {
   // tests here!
 
   //rent method
-
+test("Scooter is charged above 20% and is not broken", ()=>{
+  expect(charge).toBeGreaterThan(20);
+  expect(isBroken).toBe(false);
+  if(charge <= 20 && isBroken === true){
+    throw new console.error("scooter needs to charge or scooter needs repairing");
+  }
+})
   //dock method
-
+test("Scooter is returned to the station", ()=>{
+  expect(user).toBe(null);
+})
   //requestRepair method
 
   //charge method

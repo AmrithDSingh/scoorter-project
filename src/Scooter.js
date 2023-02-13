@@ -1,17 +1,14 @@
 class Scooter{
   // scooter code here
   static nextSerial = 1;
-  station = null;
-  user = null;
-  serial = 0;
-  charge = 0;
-  isBroken = false;
-
-  constructor() {
-    this.serial = Scooter.nextSerial++;
-    this.station = null;
+  constructor(station) {
+    this.station = station;
     this.user = null;
-    this.charge = 0;
+    this.serial = Scooter.nextSerial;
+    Scooter.nextSerial++;
+    let charge;
+    let isBroken;
+    this.charge = 100;
     this.isBroken = false;
   }
 }
