@@ -4,13 +4,42 @@ class Scooter{
   constructor(station) {
     this.station = station;
     this.user = null;
-    this.serial = Scooter.nextSerial;
-    Scooter.nextSerial++;
-    let charge;
-    let isBroken;
+    this.serial = Scooter.nextSerial++;
     this.charge = 100;
     this.isBroken = false;
   }
+  rent() {
+    if (this.charge > 20 && !this.isBroken) {
+      this.station = null;
+      this.user = "User";
+    } else if (this.charge <= 20) {
+      throw new Error("Scooter needs to be charged");
+    } else {
+      throw new Error("Scooter needs repair");
+    }
+  }
+  dock(station) {
+    this.station = station;
+    this.user = null;
+  }
+  
+  async recharge() {
+    console.log("Starting recharge");
+    
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    this.charge = 100;
+    
+    console.log("Recharge complete");
+  }
+  
+  requestRepair() {
+    this.isBroken = true;
+    setInterval(() => {
+      console.log("Repair completed");
+      this.isBroken = false;
+    }, 5000);
+  }
+
 }
 
 
